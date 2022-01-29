@@ -6,7 +6,7 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
     [SerializeField] float Speed = 1.0f;
-    [SerializeField] Vector3 Direction = new Vector3 (1 , 0 , 0);
+    [SerializeField] Vector3 Direction = new Vector3 (0 , 0 , -1);
     [SerializeField] int Damage = 80;
 
     
