@@ -110,6 +110,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bullet2
       objectReference: {fileID: 0}
+    - target: {fileID: 1289701808816076526, guid: 7f6ee64db1355334bb3d9af3c9703a89, type: 3}
+      propertyPath: m_Volume
+      value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 1289701808816076526, guid: 7f6ee64db1355334bb3d9af3c9703a89, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: c559826dcfff14955bcb6a65f0ac39c8, type: 3}
     - target: {fileID: 6964158450075501667, guid: 7f6ee64db1355334bb3d9af3c9703a89, type: 3}
       propertyPath: m_RootOrder
       value: 0
