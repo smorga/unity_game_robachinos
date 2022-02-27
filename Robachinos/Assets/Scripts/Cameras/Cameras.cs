@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class Cameras : MonoBehaviour
 {
-    [SerializeField] GameObject[] cameras;
+    public GameObject[] cameras;
     [SerializeField] int cameraActive;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -34,9 +35,10 @@ public class Cameras : MonoBehaviour
             activateCamera(1, true);
             cameraActive = 1;
         }
+         
 
     }
-    private void activateCamera(int number, bool status)
+    public void activateCamera(int number, bool status)
     {
         cameras[number].SetActive(status);
     }
