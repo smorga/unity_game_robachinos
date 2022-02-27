@@ -5,38 +5,64 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     // Start is called before the first frame update
-    public int lifePlayer = 100;
-    public string playerName = "noname";
-    public float speedPlayer = 1f;
-    public Vector3 direction;
-    public float size = 1f;
-    public int ContinuosHealing = 1;
-    public int Damage1 = 1;
-
-
-
-
+    [SerializeField] int lifePlayer = 100;
+    [SerializeField] float speedPlayerMove = 2f;
+    [SerializeField] float speedPlayerRotate = 2f;
+    [SerializeField] Vector3 direction;
+    [SerializeField] int continuosHealing = 1;
+    [SerializeField] int damage1 = 1;
+    [SerializeField] private Animator playerAnimator;
+    float cameraAxisX = 0f;
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
-    {   //PlayerHealing(ContinuosHealing);
-        //PlayerDamage(Damage1);
-        //Debug.Log(lifePlayer);
-        PlayerMovement(direction);
-        transform.localScale += new Vector3 ( size, size, size ) * speedPlayer * Time.deltaTime;
-        
+    {
+        PlayerInputMove();
+        PlayerRotate();
     }
-    void PlayerMovement(Vector3 direction2)
-    {transform.Translate(speedPlayer * Time.deltaTime * direction2);
+    //Movimiento del player
+    private void PlayerInputMove()
+    {
+
+        if (Input.GetKey(KeyCode.UpArrow))
+        {
+            PlayerMovement(Vector3.forward);
+            playerAnimator.SetBool("IsRun", true);
+        }
+        if (Input.GetKey(KeyCode.DownArrow))
+        {
+            PlayerMovement(Vector3.back);
+            playerAnimator.SetBool("IsRun", true);
+        }
+        if (Input.GetKeyUp(KeyCode.UpArrow) || Input.GetKeyUp(KeyCode.DownArrow))
+        {
+            playerAnimator.SetBool("IsRun", false);
+        }
     }
-    void PlayerHealing (int healingAmount)
-    { lifePlayer += healingAmount;
+    //Traslacion
+    private void PlayerMovement(Vector3 direction2)
+    {
+        transform.Translate(speedPlayerMove * Time.deltaTime * direction2);
     }
-    void PlayerDamage (int DamageAmount)
-    { lifePlayer -= DamageAmount;
+
+    //Rotacion
+    private void PlayerRotate()
+    {
+        cameraAxisX += Input.GetAxis("Horizontal");
+        Quaternion angulo = Quaternion.Euler(0f, cameraAxisX * speedPlayerRotate, 0f);
+        transform.localRotation = angulo;
+    }
+    //Curacion y daño
+    private void PlayerHealing(int healingAmount)
+    {
+        lifePlayer += healingAmount;
+    }
+    private void PlayerDamage(int damageAmount)
+    {
+        lifePlayer -= damageAmount;
     }
 }

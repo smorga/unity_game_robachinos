@@ -9,7 +9,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 1
-    m_ConditionEvent: Search
+    m_ConditionEvent: IsSearch
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -7328853599495156275}
@@ -34,7 +34,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 2
-    m_ConditionEvent: isRun
+    m_ConditionEvent: IsRun
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -6303280131189066356}
@@ -59,7 +59,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 2
-    m_ConditionEvent: isRun
+    m_ConditionEvent: IsRun
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -6303280131189066356}
@@ -141,7 +141,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 2
-    m_ConditionEvent: Crouch
+    m_ConditionEvent: IsCrouch
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -6303280131189066356}
@@ -180,10 +180,10 @@ AnimatorStateMachine:
     m_Position: {x: 560, y: 120, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -7497223853799713447}
-    m_Position: {x: 10, y: 380, z: 0}
+    m_Position: {x: -50, y: 370, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -2272169371451791845}
-    m_Position: {x: 10, y: 470, z: 0}
+    m_Position: {x: -50, y: 460, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions: []
   m_EntryTransitions: []
@@ -233,10 +233,10 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 1
-    m_ConditionEvent: isRun
+    m_ConditionEvent: IsRun
     m_EventTreshold: 0
   - m_ConditionMode: 1
-    m_ConditionEvent: Crouch
+    m_ConditionEvent: IsCrouch
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -2272169371451791845}
@@ -261,7 +261,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 1
-    m_ConditionEvent: death
+    m_ConditionEvent: Isdeath
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 351603576902339459}
@@ -337,25 +337,25 @@ AnimatorController:
   m_Name: player animator
   serializedVersion: 5
   m_AnimatorParameters:
-  - m_Name: isRun
+  - m_Name: IsRun
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
     m_Controller: {fileID: 0}
-  - m_Name: Search
+  - m_Name: IsSearch
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
     m_Controller: {fileID: 0}
-  - m_Name: death
+  - m_Name: Isdeath
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
     m_Controller: {fileID: 0}
-  - m_Name: Crouch
+  - m_Name: IsCrouch
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
@@ -410,7 +410,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 1
-    m_ConditionEvent: isRun
+    m_ConditionEvent: IsRun
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 4695131715737909618}
@@ -435,10 +435,10 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 2
-    m_ConditionEvent: isRun
+    m_ConditionEvent: IsRun
     m_EventTreshold: 0
   - m_ConditionMode: 2
-    m_ConditionEvent: Crouch
+    m_ConditionEvent: IsCrouch
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -6303280131189066356}
@@ -463,7 +463,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 1
-    m_ConditionEvent: isRun
+    m_ConditionEvent: IsRun
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 4695131715737909618}
@@ -488,10 +488,10 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 2
-    m_ConditionEvent: isRun
+    m_ConditionEvent: IsRun
     m_EventTreshold: 0
   - m_ConditionMode: 1
-    m_ConditionEvent: Crouch
+    m_ConditionEvent: IsCrouch
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -7497223853799713447}
@@ -516,10 +516,10 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 1
-    m_ConditionEvent: isRun
+    m_ConditionEvent: IsRun
     m_EventTreshold: 0
   - m_ConditionMode: 2
-    m_ConditionEvent: Crouch
+    m_ConditionEvent: IsCrouch
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 4695131715737909618}
@@ -574,10 +574,10 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 2
-    m_ConditionEvent: isRun
+    m_ConditionEvent: IsRun
     m_EventTreshold: 0
   - m_ConditionMode: 1
-    m_ConditionEvent: Crouch
+    m_ConditionEvent: IsCrouch
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -7497223853799713447}
@@ -602,7 +602,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 1
-    m_ConditionEvent: Search
+    m_ConditionEvent: IsSearch
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -7328853599495156275}
@@ -627,7 +627,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 1
-    m_ConditionEvent: Crouch
+    m_ConditionEvent: IsCrouch
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -7497223853799713447}
@@ -652,10 +652,10 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 1
-    m_ConditionEvent: isRun
+    m_ConditionEvent: IsRun
     m_EventTreshold: 0
   - m_ConditionMode: 2
-    m_ConditionEvent: Crouch
+    m_ConditionEvent: IsCrouch
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 4695131715737909618}
@@ -680,10 +680,10 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 1
-    m_ConditionEvent: isRun
+    m_ConditionEvent: IsRun
     m_EventTreshold: 0
   - m_ConditionMode: 1
-    m_ConditionEvent: Crouch
+    m_ConditionEvent: IsCrouch
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -2272169371451791845}

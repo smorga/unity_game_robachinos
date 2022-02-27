@@ -5,11 +5,13 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    [SerializeField] float Speed = 1.0f;
-    [SerializeField] Vector3 Direction = new Vector3 (0 , 0 , -1);
+    [SerializeField] float bulletSpeed = 1.0f;
+    
     [SerializeField] int Damage = 80;
 
-    
+    [SerializeField] float destroyTime = 3f;
+
+    private float destroyClock = 0f;
     // Start is called before the first frame update
     void Start()
     {
@@ -19,11 +21,27 @@ public class Bullet : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        BulletMovement(Direction);
+        BulletMovement(Vector3.forward);
+        
+        if(Input.GetKeyDown(KeyCode.Space))
+        {
+            Debug.Log("Space");
+            BulletRescale();
+        }
+        destroyClock += Time.deltaTime;
+        if(destroyClock >= destroyTime)
+        {
+            Destroy(gameObject);
+        }
+        
     }
-    void BulletMovement(Vector3 ParameterDirection)
+    private void BulletMovement(Vector3 ParameterDirection)
     {
-        transform.Translate(Speed * Time.deltaTime * ParameterDirection);
+        transform.Translate(bulletSpeed * Time.deltaTime * ParameterDirection);
 
+    }
+    private void BulletRescale()
+    {
+        transform.localScale += transform.localScale*2;
     }
 }
