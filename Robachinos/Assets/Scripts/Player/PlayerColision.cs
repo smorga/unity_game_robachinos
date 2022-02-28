@@ -8,8 +8,8 @@ public class PlayerColision : MonoBehaviour
     [SerializeField] float tiempoCambioCamara = 0f;
     [SerializeField] float tiempoEsperaCamara = 2f;
     public GameObject CameraControllerObject;
-
     private bool temporizadorCamara = false;
+    //luces
     [SerializeField] GameObject luzGeneral;
     [SerializeField] GameObject luzTubos;
     [SerializeField] GameObject luzGameOver;
@@ -18,29 +18,17 @@ public class PlayerColision : MonoBehaviour
     {
 
     }
-
-    // Update is called once per frame
     void Update()
     {
-        //corre temporizador de cámara
+        //corre temporizador de cámara cuando se inicie
         if (temporizadorCamara == true)
         {
-            tiempoCambioCamara += Time.deltaTime;
+            Temporizador();
         }
         //Vuelve camara luego de agotado el temporizador
         if (tiempoCambioCamara >= tiempoEsperaCamara)
         {
-            //cambio de camara
-            CameraControllerObject.GetComponent<Cameras>().activateCamera(1, false);
-            CameraControllerObject.GetComponent<Cameras>().activateCamera(0, true);
-            //apaga las luces
-            luzGeneral.SetActive(false);
-            luzTubos.SetActive(false);
-            //resetea temporizador y lo apaga
-            tiempoCambioCamara = 0;
-            temporizadorCamara = false;
-            //restaura movimiento del player
-            GetComponent<Player>().playerCanMove = true;
+            CamaraOriginal();
         }
     }
     private void OnCollisionStay(Collision other)
@@ -48,27 +36,60 @@ public class PlayerColision : MonoBehaviour
         //si está tocando el powerup y toca space
         if (other.gameObject.CompareTag("PowerUp") && Input.GetKeyDown(KeyCode.Space))
         {
-            Debug.Log("ACCION QUE CAMBIA LA CAMARA Y ABRE LA PUERTA");
-            //Cambio de cámara
-            CameraControllerObject.GetComponent<Cameras>().activateCamera(0, false);
-            CameraControllerObject.GetComponent<Cameras>().activateCamera(1, true);
-            //Inicio de temporizador
-            temporizadorCamara = true;
-            //frena movimiento del player
-            GetComponent<Player>().playerCanMove = false;
-
+            CambioCamara();
         }
     }
     private void OnCollisionEnter(Collision other)
     {
-        //Debug.Log(name + " COLISION CON " + other.gameObject.name);
+        //si al player lo toca una bullet
         if (other.gameObject.CompareTag("Bullet"))
         {
-            Debug.Log("GAME OVER");
-            Destroy(gameObject);
-            luzGeneral.SetActive(false);
-            luzTubos.SetActive(false);
-            luzGameOver.SetActive(true);
+            PlayerDie();
         }
+    }
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.CompareTag("Door"))
+        {
+            //win action
+            Debug.Log("WIN");
+        }
+    }
+    private void PlayerDie()
+    {
+        Debug.Log("GAME OVER");
+        Destroy(gameObject);
+        luzGeneral.SetActive(false);
+        luzTubos.SetActive(false);
+        luzGameOver.SetActive(true);
+    }
+    private void CambioCamara()
+    {
+        Debug.Log("ACCION QUE CAMBIA LA CAMARA Y ABRE LA PUERTA");
+        //Cambio de cámara
+        CameraControllerObject.GetComponent<Cameras>().activateCamera(0, false);
+        CameraControllerObject.GetComponent<Cameras>().activateCamera(1, true);
+        //Inicio de temporizador
+        temporizadorCamara = true;
+        //frena movimiento del player
+        GetComponent<Player>().playerCanMove = false;
+    }
+    private void Temporizador()
+    {
+        tiempoCambioCamara += Time.deltaTime;
+    }
+    private void CamaraOriginal()
+    {
+        //cambio de camara
+        CameraControllerObject.GetComponent<Cameras>().activateCamera(1, false);
+        CameraControllerObject.GetComponent<Cameras>().activateCamera(0, true);
+        //apaga las luces
+        luzGeneral.SetActive(false);
+        luzTubos.SetActive(false);
+        //resetea temporizador y lo apaga
+        tiempoCambioCamara = 0;
+        temporizadorCamara = false;
+        //restaura movimiento del player
+        GetComponent<Player>().playerCanMove = true;
     }
 }

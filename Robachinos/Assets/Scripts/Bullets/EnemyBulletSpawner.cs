@@ -7,11 +7,11 @@ public class EnemyBulletSpawner : MonoBehaviour
     [SerializeField] GameObject bulletPrefab;
     [SerializeField] float SpawnRate = 2f;
     [SerializeField] float SpawnDelay = 2f;
-    [SerializeField] bool EnemyIsShoot = true;
+    [SerializeField] bool EnemyCanShoot = false;
     // Start is called before the first frame update
     void Start()
     {
-        if(EnemyIsShoot == true)
+        if(EnemyCanShoot == true)
         {
             InvokeRepeating("SpawnBullet", SpawnDelay, SpawnRate);
         }
