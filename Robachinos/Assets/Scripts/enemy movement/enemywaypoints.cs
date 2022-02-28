@@ -5,11 +5,13 @@ using UnityEngine;
 public class enemywaypoints : MonoBehaviour
 {
 
-    public Transform[] waypoints;
-    public float speed;
-    public int currentindex;
-    public float minimunDistance;
-    public bool goback;
+    [SerializeField] public Transform[] waypoints;
+    [SerializeField] public float speed;
+    [SerializeField] public int currentindex;
+    [SerializeField] public float minimunDistance;
+    [SerializeField] public bool goback;
+    [SerializeField] private Animator EnemyAnimator;
+
 
 
 
@@ -40,9 +42,11 @@ public class enemywaypoints : MonoBehaviour
             if (currentindex >= waypoints.Length - 1)
             {
                 goback = true;
+                EnemyAnimator.SetBool("IsRun", true);
             }
             else if (currentindex <= 0)
-            { goback = false;
+            {   goback = false;
+                EnemyAnimator.SetBool("IsRun", true);
             }
             
             
