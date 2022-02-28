@@ -104,6 +104,7 @@ MonoBehaviour:
   continuosHealing: 1
   damage1: 1
   playerAnimator: {fileID: -8506864012152407023}
+  playerCanMove: 1
 --- !u!114 &7266332349498879971
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -119,6 +120,9 @@ MonoBehaviour:
   tiempoCambioCamara: 0
   tiempoEsperaCamara: 3
   CameraControllerObject: {fileID: 0}
+  luzGeneral: {fileID: 0}
+  luzTubos: {fileID: 0}
+  luzGameOver: {fileID: 0}
 --- !u!95 &-8506864012152407023
 Animator:
   serializedVersion: 3
@@ -165,8 +169,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.7900367, y: 3.8705254, z: 1.7466071}
-  m_Center: {x: 1.1700752, y: 2.0546832, z: 0.119626164}
+  m_Size: {x: 1.7900367, y: 3.965513, z: 1.7466071}
+  m_Center: {x: 1.1700752, y: 2.0071893, z: 0.119626164}
 --- !u!1 &4969784544451656089
 GameObject:
   m_ObjectHideFlags: 0

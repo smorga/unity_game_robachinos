@@ -7,12 +7,11 @@ public class EnemySeePlayer : MonoBehaviour
     [SerializeField] GameObject playerTarget;
     [SerializeField] float enemySeeMaxDistance = 2f;
     [SerializeField] float enemyViewAngle = 2f;
-    public Vector3 enemySeeDirection;
-    private RaycastHit hit;
-    public bool eneySeePlayer;
+    Vector3 enemySeeDirection;
+    RaycastHit hit;
+    public bool enemySeePlayer;
     public float angulo;
-    public float magnitud;
-    public Vector3 enemyForward;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -23,18 +22,26 @@ public class EnemySeePlayer : MonoBehaviour
     void Update()
     {
         //calculo el vector de movimiento desde enemy a player
-        enemySeeDirection = (playerTarget.transform.position - transform.position).normalized;
-        //valido que el angulo entre el forward del enemy y el player esta dentro del rango de vision del enemy
+        enemySeeDirection = (playerTarget.transform.position - transform.position);
+        //calculo el ángulo entre el enemigo y el player
         angulo = Vector3.Angle(transform.forward, enemySeeDirection);
-        enemyForward = transform.forward;
-        magnitud = transform.forward.magnitude;
+    }
+    void FixedUpdate()
+    {
         if (Vector3.Angle(transform.forward, enemySeeDirection) <= enemyViewAngle)
         {
             //emulo un rayo desde la posicion del enemy hasta el player
-            eneySeePlayer = Physics.Raycast(transform.position, enemySeeDirection, out hit, enemySeeMaxDistance);
+            Debug.Log(Physics.Raycast(transform.position, enemySeeDirection, out hit));
+
+            if (Physics.Raycast(transform.position, enemySeeDirection, out hit))
+            {
+                Debug.DrawRay(transform.position, enemySeeDirection * hit.distance, Color.yellow, 99999999f);
+                enemySeePlayer = true;
+            }
         }
-
-
-
+        else
+        {
+            enemySeePlayer = false;
+        }
     }
 }

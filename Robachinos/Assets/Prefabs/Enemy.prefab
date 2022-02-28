@@ -1,5 +1,35 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1851694381813203271
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8591596444387344641}
+  m_Layer: 0
+  m_Name: EnemySeePoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8591596444387344641
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1851694381813203271}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.14, y: 2.62, z: 0.37}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 3667982195301902246}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3667982193948246739
 GameObject:
   m_ObjectHideFlags: 0
@@ -25,7 +55,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3667982193948246739}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 1.64, y: 1.67, z: 1.27}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3667982195301902246}
@@ -46,7 +76,7 @@ MonoBehaviour:
   bulletPrefab: {fileID: 1153883634932899468, guid: 7f6ee64db1355334bb3d9af3c9703a89, type: 3}
   SpawnRate: 1
   SpawnDelay: 2
-  EnemyCanShoot: 1
+  EnemyCanShoot: 0
 --- !u!1 &3667982195301902241
 GameObject:
   m_ObjectHideFlags: 0
@@ -57,6 +87,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3667982195301902246}
   - component: {fileID: 1756385085}
+  - component: {fileID: 3517899722402029587}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -73,10 +104,11 @@ Transform:
   m_GameObject: {fileID: 3667982195301902241}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 1, y: 1.0971849, z: 7.4247723}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children:
   - {fileID: 3667982193948246736}
   - {fileID: 3850000585775818929}
+  - {fileID: 8591596444387344641}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -96,10 +128,24 @@ MonoBehaviour:
   enemySeeMaxDistance: 99
   enemyViewAngle: 15
   enemySeeDirection: {x: 0, y: 0, z: 0}
-  eneySeePlayer: 0
+  enemySeePlayer: 0
+  se_ven: 0
   angulo: 0
   magnitud: 0
   enemyForward: {x: 0, y: 0, z: 0}
+--- !u!65 &3517899722402029587
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3667982195301902241}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.7244205, y: 4.5, z: 1.9401474}
+  m_Center: {x: 1.184268, y: 1, z: 0.011253357}
 --- !u!1001 &3667982193575841626
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -113,27 +159,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 3281d5e3a9ad7544fa02161107843039, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 3281d5e3a9ad7544fa02161107843039, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 3281d5e3a9ad7544fa02161107843039, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 3281d5e3a9ad7544fa02161107843039, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -7.79
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 3281d5e3a9ad7544fa02161107843039, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.1
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 3281d5e3a9ad7544fa02161107843039, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1.11
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 3281d5e3a9ad7544fa02161107843039, type: 3}
       propertyPath: m_LocalRotation.w
