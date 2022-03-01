@@ -1,7 +1,11 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
 guid: 12ccd3a845e37e3409541e3db2e2440c
 timeCreated: 1520410828
 licenseType: Store
+=======
+guid: 247994476af01a14b9b20a4bf60c1b81
+>>>>>>> copyjuly
 NativeFormatImporter:
   externalObjects: {}
   mainObjectFileID: 2100000

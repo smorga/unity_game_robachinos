@@ -23,11 +23,6 @@ public class Bullet : MonoBehaviour
     {
         BulletMovement(Vector3.forward);
         
-        if(Input.GetKeyDown(KeyCode.Space))
-        {
-            Debug.Log("Space");
-            BulletRescale();
-        }
         destroyClock += Time.deltaTime;
         if(destroyClock >= destroyTime)
         {
