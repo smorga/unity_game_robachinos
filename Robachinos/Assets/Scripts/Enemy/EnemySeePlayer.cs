@@ -13,11 +13,13 @@ public class EnemySeePlayer : MonoBehaviour
     [SerializeField] GameObject luzGeneral;
     public bool enemySeePlayer;
     private float hitDistance;
+    private GameObject bulletGenerator;
 
     // Start is called before the first frame update
     void Start()
     {
         player = GameObject.Find("---PLAYER---");
+        bulletGenerator = GameObject.Find("EnemyBulletGenerator");
     }
 
     // Update is called once per frame
@@ -43,6 +45,7 @@ public class EnemySeePlayer : MonoBehaviour
 
     private void EnemySeeTargetCheck()
     {
+        //funciona sólo con las luces prendidas
         if (luzGeneral.activeSelf)
         {
             //calculo el vector de movimiento desde enemy a player
@@ -54,12 +57,13 @@ public class EnemySeePlayer : MonoBehaviour
                 if (Physics.Raycast(transform.position, enemySeeDirection, out hit, enemySeeMaxDistance))
                 {
                     enemySeePlayer = true;
-
+                    bulletGenerator.GetComponent<BulletSpawner>().EnemyCanShoot = true;
                 }
             }
             else
             {
                 enemySeePlayer = false;
+                bulletGenerator.GetComponent<BulletSpawner>().EnemyCanShoot = false;
             }
         }
         

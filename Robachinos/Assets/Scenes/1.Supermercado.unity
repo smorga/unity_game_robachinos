@@ -33003,7 +33003,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 754152345563320466, guid: 968a3a9fcdd337c4ba0f50fa7435562c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.73
       objectReference: {fileID: 0}
     - target: {fileID: 754152345563320466, guid: 968a3a9fcdd337c4ba0f50fa7435562c, type: 3}
       propertyPath: m_LocalPosition.z
@@ -33060,6 +33060,14 @@ PrefabInstance:
     - target: {fileID: 754152345563320469, guid: 968a3a9fcdd337c4ba0f50fa7435562c, type: 3}
       propertyPath: m_Name
       value: ---ENEMY---
+      objectReference: {fileID: 0}
+    - target: {fileID: 754152346531262752, guid: 968a3a9fcdd337c4ba0f50fa7435562c, type: 3}
+      propertyPath: m_Name
+      value: EnemyBulletGenerator
+      objectReference: {fileID: 0}
+    - target: {fileID: 754152346531262753, guid: 968a3a9fcdd337c4ba0f50fa7435562c, type: 3}
+      propertyPath: cooldownTime
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 754152346531262753, guid: 968a3a9fcdd337c4ba0f50fa7435562c, type: 3}
       propertyPath: EnemyCanShoot
