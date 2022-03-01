@@ -5,20 +5,24 @@ using UnityEngine;
 
 public class PlayerColision : MonoBehaviour
 {
-
-    [SerializeField] float tiempoCambioCamara = 0f;
+    //variables camara
+    private float tiempoCambioCamara = 0f;
     [SerializeField] float tiempoEsperaCamara = 2f;
     public GameObject CameraControllerObject;
     private bool temporizadorCamara = false;
     //luces
     [SerializeField] GameObject luzGeneral;
-
     [SerializeField] GameObject luzGameOver;
+    [SerializeField] GameObject luzWin;
     [SerializeField] GameObject DoorLeft;
     [SerializeField] GameObject DoorRight;
+    private float timerLucesOff = 0f;
+    [SerializeField] float tiempoLucesOff = 10f;
+    private bool temporizadorLuces = false;
+
     private bool DoorOpen = false;
     [SerializeField] float DoorDistance = 10f;
-    public float DoorAcumDistance = 0f;
+    private float DoorAcumDistance = 0f;
     // Start is called before the first frame update
     void Start()
     {
@@ -29,19 +33,31 @@ public class PlayerColision : MonoBehaviour
         //corre temporizador de cámara cuando se inicie
         if (temporizadorCamara == true)
         {
-            Temporizador();
+            TemporizadorCamara();
         }
         //Vuelve camara luego de agotado el temporizador
         if (tiempoCambioCamara >= tiempoEsperaCamara)
         {
             CamaraOriginal();
         }
+        //apertura de puerta
         if (DoorOpen == true)
         {
             OpenDoor();
         }
-
+        //temporizador de luces
+        if (temporizadorLuces == true)
+        {
+            TemporizadorLuces();
+        }
+        if (timerLucesOff >= tiempoLucesOff)
+        {
+            LucesOn();
+        }
     }
+
+
+
 
     private void OpenDoor()
     {
@@ -49,20 +65,26 @@ public class PlayerColision : MonoBehaviour
         {
             DoorLeft.transform.position += Vector3.forward * Time.deltaTime;
             DoorRight.transform.position += Vector3.back * Time.deltaTime;
-            DoorAcumDistance += Vector3.back.magnitude*Time.deltaTime;
+            DoorAcumDistance += Vector3.back.magnitude * Time.deltaTime;
         }
     }
 
     private void OnCollisionStay(Collision other)
     {
         //si está tocando el powerup y toca space
-        if (other.gameObject.CompareTag("PowerUp") && Input.GetKeyDown(KeyCode.Space))
+        if (other.gameObject.CompareTag("PU OpenDoor") && Input.GetKeyDown(KeyCode.Space))
         {
             CambioCamara();
             //Metodo de apertura de puerta
             DoorOpen = true;
         }
+        if (other.gameObject.CompareTag("PU LightsOff") && Input.GetKeyDown(KeyCode.Space))
+        {
+            LucesOff();
+            
+        }
     }
+    
     private void OnCollisionEnter(Collision other)
     {
         //si al player lo toca una bullet
@@ -77,12 +99,17 @@ public class PlayerColision : MonoBehaviour
         {
             //win action
             PlayerWin();
+
         }
     }
 
-    private static void PlayerWin()
+    private void PlayerWin()
     {
         Debug.Log("WIN");
+        Destroy(gameObject);
+        luzGeneral.SetActive(false);
+        luzWin.SetActive(true);
+
     }
 
     private void PlayerDie()
@@ -102,8 +129,9 @@ public class PlayerColision : MonoBehaviour
         temporizadorCamara = true;
         //frena movimiento del player
         GetComponent<Player>().playerCanMove = false;
+        GetComponent<Player>().playerAnimator.SetBool("IsRun", false);
     }
-    private void Temporizador()
+    private void TemporizadorCamara()
     {
         tiempoCambioCamara += Time.deltaTime;
     }
@@ -112,13 +140,29 @@ public class PlayerColision : MonoBehaviour
         //cambio de camara
         CameraControllerObject.GetComponent<Cameras>().activateCamera(0, true);
         CameraControllerObject.GetComponent<Cameras>().activateCamera(1, false);
-
-        //apaga las luces
-        luzGeneral.SetActive(false);
         //resetea temporizador y lo apaga
         tiempoCambioCamara = 0;
         temporizadorCamara = false;
         //restaura movimiento del player
         GetComponent<Player>().playerCanMove = true;
     }
+
+    private void LucesOff()
+    {
+        //apaga las luces
+        luzGeneral.SetActive(false);
+        temporizadorLuces = true;
+    }
+    private void LucesOn()
+    {
+        luzGeneral.SetActive(true);
+        timerLucesOff = 0;
+        temporizadorLuces = false;
+    }
+    private void TemporizadorLuces()
+    {
+        timerLucesOff += Time.deltaTime;
+    }
+
+
 }
