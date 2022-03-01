@@ -13,6 +13,7 @@ public class PlayerColision : MonoBehaviour
     //luces
     [SerializeField] GameObject luzGeneral;
     [SerializeField] GameObject luzGameOver;
+    [SerializeField] GameObject luzWin;
     [SerializeField] GameObject DoorLeft;
     [SerializeField] GameObject DoorRight;
     private float timerLucesOff = 0f;
@@ -98,12 +99,17 @@ public class PlayerColision : MonoBehaviour
         {
             //win action
             PlayerWin();
+
         }
     }
 
-    private static void PlayerWin()
+    private void PlayerWin()
     {
         Debug.Log("WIN");
+        Destroy(gameObject);
+        luzGeneral.SetActive(false);
+        luzWin.SetActive(true);
+
     }
 
     private void PlayerDie()
