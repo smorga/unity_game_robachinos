@@ -6,12 +6,13 @@ public class Player : MonoBehaviour
 {
     // Start is called before the first frame update
     [SerializeField] int lifePlayer = 100;
-    [SerializeField] float speedPlayerMove = 2f;
+    [SerializeField] float speedPlayerMove = 4f;
     [SerializeField] float speedPlayerRotate = 2f;
     [SerializeField] Vector3 direction;
     [SerializeField] int continuosHealing = 1;
     [SerializeField] int damage1 = 1;
     [SerializeField] private Animator playerAnimator;
+    public bool playerCanMove = true;
     float cameraAxisX = 0f;
     void Start()
     {
@@ -21,13 +22,16 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        PlayerInputMove();
-        PlayerRotate();
+        if (playerCanMove == true)
+        {
+            PlayerInputMove();
+            PlayerRotate();
+        }
+
     }
     //Movimiento del player
     private void PlayerInputMove()
     {
-
         if (Input.GetKey(KeyCode.UpArrow))
         {
             PlayerMovement(Vector3.forward);

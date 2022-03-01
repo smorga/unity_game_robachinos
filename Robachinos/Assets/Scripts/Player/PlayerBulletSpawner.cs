@@ -32,15 +32,15 @@ public class PlayerBulletSpawner : MonoBehaviour
     }
     private void SpawnBullet1()
     {
-        Instantiate(bulletPrefab, bulletPoint.transform.position, bulletPrefab.transform.rotation);
+        Instantiate(bulletPrefab, bulletPoint.transform.position, transform.rotation);
     }
     private void SpawnBullet2()
     {
-        Instantiate(bulletPrefab2, bulletPoint.transform.position, bulletPrefab2.transform.rotation);
+        Instantiate(bulletPrefab2, bulletPoint.transform.position, transform.rotation);
     }
     private void SpawnBullet3()
     {
-        Instantiate(bulletPrefab3, bulletPoint.transform.position, bulletPrefab3.transform.rotation);
+        Instantiate(bulletPrefab3, bulletPoint.transform.position, transform.rotation);
 
     }
 }
