@@ -8,10 +8,7 @@ public class Player : MonoBehaviour
     [SerializeField] int lifePlayer = 100;
     [SerializeField] float speedPlayerMove = 4f;
     [SerializeField] float speedPlayerRotate = 2f;
-    [SerializeField] Vector3 direction;
-    [SerializeField] int continuosHealing = 1;
-    [SerializeField] int damage1 = 1;
-    [SerializeField] private Animator playerAnimator;
+    [SerializeField] public Animator playerAnimator;
     public bool playerCanMove = true;
     float cameraAxisX = 0f;
     void Start()

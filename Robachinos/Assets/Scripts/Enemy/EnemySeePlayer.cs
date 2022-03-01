@@ -10,8 +10,9 @@ public class EnemySeePlayer : MonoBehaviour
     [SerializeField] float enemyViewAngle = 2f;
     Vector3 enemySeeDirection;
     RaycastHit hit;
+    [SerializeField] GameObject luzGeneral;
     public bool enemySeePlayer;
-    public float hitDistance;
+    private float hitDistance;
 
     // Start is called before the first frame update
     void Start()
@@ -23,7 +24,7 @@ public class EnemySeePlayer : MonoBehaviour
     void Update()
     {
         LookAtPlayer();
-        
+
     }
 
     private void LookAtPlayer()
@@ -36,21 +37,32 @@ public class EnemySeePlayer : MonoBehaviour
 
     void FixedUpdate()
     {
-        //calculo el vector de movimiento desde enemy a player
-        enemySeeDirection = (player.transform.position - transform.position);
-        hitDistance = enemySeeDirection.magnitude;
-        if (Vector3.Angle(transform.forward, enemySeeDirection) <= enemyViewAngle && enemySeeDirection.magnitude<=enemySeeMaxDistance)
+
+        EnemySeeTargetCheck();
+    }
+
+    private void EnemySeeTargetCheck()
+    {
+        if (luzGeneral.activeSelf)
         {
-            //emulo un rayo desde la posicion del enemy hasta el player
-            if (Physics.Raycast(transform.position, enemySeeDirection, out hit,enemySeeMaxDistance))
+            //calculo el vector de movimiento desde enemy a player
+            enemySeeDirection = (player.transform.position - transform.position);
+            hitDistance = enemySeeDirection.magnitude;
+            if (Vector3.Angle(transform.forward, enemySeeDirection) <= enemyViewAngle && enemySeeDirection.magnitude <= enemySeeMaxDistance)
             {
-                enemySeePlayer = true;
-                
+                //emulo un rayo desde la posicion del enemy hasta el player
+                if (Physics.Raycast(transform.position, enemySeeDirection, out hit, enemySeeMaxDistance))
+                {
+                    enemySeePlayer = true;
+
+                }
+            }
+            else
+            {
+                enemySeePlayer = false;
             }
         }
-        else
-        {
-            enemySeePlayer = false;
-        }
+        
+
     }
 }
