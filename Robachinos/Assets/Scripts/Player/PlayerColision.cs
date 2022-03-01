@@ -11,7 +11,7 @@ public class PlayerColision : MonoBehaviour
     private bool temporizadorCamara = false;
     //luces
     [SerializeField] GameObject luzGeneral;
-    [SerializeField] GameObject luzTubos;
+    
     [SerializeField] GameObject luzGameOver;
     // Start is called before the first frame update
     void Start()
@@ -60,7 +60,6 @@ public class PlayerColision : MonoBehaviour
         Debug.Log("GAME OVER");
         Destroy(gameObject);
         luzGeneral.SetActive(false);
-        luzTubos.SetActive(false);
         luzGameOver.SetActive(true);
     }
     private void CambioCamara()
@@ -85,7 +84,6 @@ public class PlayerColision : MonoBehaviour
         CameraControllerObject.GetComponent<Cameras>().activateCamera(0, true);
         //apaga las luces
         luzGeneral.SetActive(false);
-        luzTubos.SetActive(false);
         //resetea temporizador y lo apaga
         tiempoCambioCamara = 0;
         temporizadorCamara = false;

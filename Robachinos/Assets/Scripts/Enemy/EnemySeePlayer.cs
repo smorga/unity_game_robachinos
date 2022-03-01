@@ -30,6 +30,7 @@ public class EnemySeePlayer : MonoBehaviour
     {
         if (Vector3.Angle(transform.forward, enemySeeDirection) <= enemyViewAngle)
         {
+            
             //emulo un rayo desde la posicion del enemy hasta el player
             Debug.Log(Physics.Raycast(transform.position, enemySeeDirection, out hit));
 
