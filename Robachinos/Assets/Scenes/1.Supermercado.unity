@@ -33060,6 +33060,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ---ENEMY---
       objectReference: {fileID: 0}
+    - target: {fileID: 754152346531262753, guid: 968a3a9fcdd337c4ba0f50fa7435562c, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5240736456549588368, guid: 968a3a9fcdd337c4ba0f50fa7435562c, type: 3}
       propertyPath: m_Enabled
       value: 1
