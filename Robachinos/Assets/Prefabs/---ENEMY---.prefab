@@ -41,7 +41,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 754152345563320469}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 39fdb5265f1d87e41a87e933a9837341, type: 3}
   m_Name: 
@@ -50,10 +50,8 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  speed: 3
-  currentindex: 0
+  speed: 5
   minimunDistance: 1
-  goback: 0
   EnemyAnimator: {fileID: 6565645971878372189}
 --- !u!114 &5240736456549588368
 MonoBehaviour:
@@ -67,11 +65,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8ad9e00f41a6114594eaf61f4cdc194, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerTarget: {fileID: 0}
-  enemySeeMaxDistance: 2
-  enemyViewAngle: 15
+  player: {fileID: 0}
+  enemySeeMaxDistance: 10
+  enemyViewAngle: 30
+  luzGeneral: {fileID: 0}
   enemySeePlayer: 0
-  angulo: 0
 --- !u!1 &754152346531262752
 GameObject:
   m_ObjectHideFlags: 0
@@ -83,7 +81,7 @@ GameObject:
   - component: {fileID: 754152346531262782}
   - component: {fileID: 754152346531262753}
   m_Layer: 0
-  m_Name: BulletGenerator
+  m_Name: EnemyBulletGenerator
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -97,7 +95,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 754152346531262752}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.85, y: 1.17, z: 0}
+  m_LocalPosition: {x: -0.1, y: 1.17, z: 0.74}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 754152345563320466}
@@ -110,14 +108,16 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 754152346531262752}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 37088edefa5c16a418e1819a653f0216, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 8756090546100324869, guid: 7f6ee64db1355334bb3d9af3c9703a89, type: 3}
-  SpawnRate: 3
-  SpawnDelay: 4
+  bulletGenerator: {fileID: 0}
+  cooldownTimer: 0
+  cooldownTime: 1
+  setTimerCooldown: 0
   EnemyCanShoot: 0
 --- !u!1001 &754152346925686476
 PrefabInstance:

@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerColision : MonoBehaviour
 {
@@ -21,7 +22,7 @@ public class PlayerColision : MonoBehaviour
     private bool temporizadorLuces = false;
 
     private bool DoorOpen = false;
-    [SerializeField] float DoorDistance = 10f;
+    private float DoorDistance = 10f;
     private float DoorAcumDistance = 0f;
     // Start is called before the first frame update
     void Start()
@@ -31,29 +32,14 @@ public class PlayerColision : MonoBehaviour
     void Update()
     {
         //corre temporizador de cámara cuando se inicie
-        if (temporizadorCamara == true)
-        {
-            TemporizadorCamara();
-        }
+        TemporizadorCamara();
         //Vuelve camara luego de agotado el temporizador
-        if (tiempoCambioCamara >= tiempoEsperaCamara)
-        {
-            CamaraOriginal();
-        }
+        CamaraOriginal();
         //apertura de puerta
-        if (DoorOpen == true)
-        {
-            OpenDoor();
-        }
+        OpenDoor();
         //temporizador de luces
-        if (temporizadorLuces == true)
-        {
-            TemporizadorLuces();
-        }
-        if (timerLucesOff >= tiempoLucesOff)
-        {
-            LucesOn();
-        }
+        TemporizadorLuces();
+        LucesOn();
     }
 
 
@@ -61,11 +47,14 @@ public class PlayerColision : MonoBehaviour
 
     private void OpenDoor()
     {
-        if (DoorAcumDistance <= DoorDistance)
+        if (DoorOpen == true)
         {
-            DoorLeft.transform.position += Vector3.forward * Time.deltaTime;
-            DoorRight.transform.position += Vector3.back * Time.deltaTime;
-            DoorAcumDistance += Vector3.back.magnitude * Time.deltaTime;
+            if (DoorAcumDistance <= DoorDistance)
+            {
+                DoorLeft.transform.position += Vector3.forward * Time.deltaTime;
+                DoorRight.transform.position += Vector3.back * Time.deltaTime;
+                DoorAcumDistance += Vector3.back.magnitude * Time.deltaTime;
+            }
         }
     }
 
@@ -81,10 +70,10 @@ public class PlayerColision : MonoBehaviour
         if (other.gameObject.CompareTag("PU LightsOff") && Input.GetKeyDown(KeyCode.Space))
         {
             LucesOff();
-            
+
         }
     }
-    
+
     private void OnCollisionEnter(Collision other)
     {
         //si al player lo toca una bullet
@@ -106,19 +95,19 @@ public class PlayerColision : MonoBehaviour
     private void PlayerWin()
     {
         Debug.Log("WIN");
-        Destroy(gameObject);
         luzGeneral.SetActive(false);
         luzWin.SetActive(true);
-
+        SceneManager.LoadScene("1.Supermercado");
     }
 
     private void PlayerDie()
     {
         Debug.Log("GAME OVER");
-        Destroy(gameObject);
         luzGeneral.SetActive(false);
         luzGameOver.SetActive(true);
+        SceneManager.LoadScene("1.Supermercado");
     }
+
     private void CambioCamara()
     {
         Debug.Log("ACCION QUE CAMBIA LA CAMARA Y ABRE LA PUERTA");
@@ -133,18 +122,25 @@ public class PlayerColision : MonoBehaviour
     }
     private void TemporizadorCamara()
     {
-        tiempoCambioCamara += Time.deltaTime;
+        if (temporizadorCamara == true)
+        {
+            tiempoCambioCamara += Time.deltaTime;
+        }
+
     }
     private void CamaraOriginal()
     {
-        //cambio de camara
-        CameraControllerObject.GetComponent<Cameras>().activateCamera(0, true);
-        CameraControllerObject.GetComponent<Cameras>().activateCamera(1, false);
-        //resetea temporizador y lo apaga
-        tiempoCambioCamara = 0;
-        temporizadorCamara = false;
-        //restaura movimiento del player
-        GetComponent<Player>().playerCanMove = true;
+        if (tiempoCambioCamara >= tiempoEsperaCamara)
+        {
+            //cambio de camara
+            CameraControllerObject.GetComponent<Cameras>().activateCamera(0, true);
+            CameraControllerObject.GetComponent<Cameras>().activateCamera(1, false);
+            //resetea temporizador y lo apaga
+            tiempoCambioCamara = 0;
+            temporizadorCamara = false;
+            //restaura movimiento del player
+            GetComponent<Player>().playerCanMove = true;
+        }
     }
 
     private void LucesOff()
@@ -155,13 +151,19 @@ public class PlayerColision : MonoBehaviour
     }
     private void LucesOn()
     {
-        luzGeneral.SetActive(true);
-        timerLucesOff = 0;
-        temporizadorLuces = false;
+        if (timerLucesOff >= tiempoLucesOff)
+        {
+            luzGeneral.SetActive(true);
+            timerLucesOff = 0;
+            temporizadorLuces = false;
+        }
     }
     private void TemporizadorLuces()
     {
-        timerLucesOff += Time.deltaTime;
+        if (temporizadorLuces == true)
+        {
+            timerLucesOff += Time.deltaTime;
+        }
     }
 
 

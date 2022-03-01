@@ -13,9 +13,6 @@ public class EnemyMove : MonoBehaviour
     [SerializeField] private Animator EnemyAnimator;
 
 
-
-
-
     // Start is called before the first frame update
     void Start()
     {
@@ -26,7 +23,7 @@ public class EnemyMove : MonoBehaviour
     void Update()
     {
         WaypointMovement();
-
+        MoveTowards();
     }
     void WaypointMovement()
     {
@@ -34,12 +31,9 @@ public class EnemyMove : MonoBehaviour
         {
             var deltaVector = waypoints[currentindex].position - transform.position;
             var direction = deltaVector.normalized;
-            
+
             EnemyAnimator.SetBool("IsRun", true);
             transform.position += direction * speed * Time.deltaTime;
-            
-            //Quaternion newRotation = Quaternion.LookRotation(transform.position - waypoints[currentindex].position);
-            //transform.rotation = newRotation;
             transform.LookAt(waypoints[currentindex]);
             if (deltaVector.magnitude <= minimunDistance)
             {
@@ -67,5 +61,24 @@ public class EnemyMove : MonoBehaviour
 
 
 
+    }
+    private void MoveTowards()
+    {
+        if (GetComponent<EnemySeePlayer>().enemySeePlayer == true)
+        {
+            var player = GetComponent<EnemySeePlayer>().player;
+            //Vector3 
+            Vector3 directionaux = (player.transform.position - transform.position);
+            Vector3 direction = new Vector3(directionaux.x, 0f, directionaux.z);
+            if (direction.magnitude > 3)
+            {
+                EnemyAnimator.SetBool("IsRun", true);
+                transform.position += speed * direction.normalized * Time.deltaTime;
+            }
+            else
+            {
+                EnemyAnimator.SetBool("IsRun", false);
+            }
+        }
     }
 }

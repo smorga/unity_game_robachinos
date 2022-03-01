@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class EnemySeePlayer : MonoBehaviour
 {
-    [SerializeField] GameObject player;
+    [SerializeField] public GameObject player;
     [SerializeField] float enemySeeMaxDistance = 2f;
     [SerializeField] float enemyViewAngle = 2f;
     Vector3 enemySeeDirection;
