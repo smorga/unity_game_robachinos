@@ -7,9 +7,9 @@ public class EnemyMove : MonoBehaviour
 
     [SerializeField] public Transform[] waypoints;
     [SerializeField] public float speed;
-    private int currentindex;
+    [SerializeField] public int currentindex;
     [SerializeField] public float minimunDistance;
-    private bool goback;
+    [SerializeField] public bool goback;
     [SerializeField] private Animator EnemyAnimator;
 
 
@@ -19,22 +19,25 @@ public class EnemyMove : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-        WaypointMovement();
-
+        movement();
+        
     }
-    void WaypointMovement()
+    void movement()
     {
         var deltaVector = waypoints[currentindex].position - transform.position;
         var direction = deltaVector.normalized;
+
         transform.position += direction * speed * Time.deltaTime;
         transform.LookAt(waypoints[currentindex]);
-        if (deltaVector.magnitude <= minimunDistance)
+
+
+        if (deltaVector.magnitude <= minimunDistance) 
         {
             if (currentindex >= waypoints.Length - 1)
             {
@@ -42,15 +45,21 @@ public class EnemyMove : MonoBehaviour
                 EnemyAnimator.SetBool("IsRun", true);
             }
             else if (currentindex <= 0)
-            {
-                goback = false;
+            {   goback = false;
                 EnemyAnimator.SetBool("IsRun", true);
             }
+            
+            
             if (goback)
-            {
-                currentindex--;
+            { currentindex--;
             }
             else currentindex++;
+
         }
+
+
+
+
+
     }
 }
