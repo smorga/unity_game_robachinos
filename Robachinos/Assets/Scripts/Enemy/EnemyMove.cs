@@ -30,27 +30,42 @@ public class EnemyMove : MonoBehaviour
     }
     void WaypointMovement()
     {
-        var deltaVector = waypoints[currentindex].position - transform.position;
-        var direction = deltaVector.normalized;
-        transform.position += direction * speed * Time.deltaTime;
-        transform.LookAt(waypoints[currentindex]);
-        if (deltaVector.magnitude <= minimunDistance)
+        if (GetComponent<EnemySeePlayer>().enemySeePlayer == false)
         {
-            if (currentindex >= waypoints.Length - 1)
+            var deltaVector = waypoints[currentindex].position - transform.position;
+            var direction = deltaVector.normalized;
+            
+            EnemyAnimator.SetBool("IsRun", true);
+            transform.position += direction * speed * Time.deltaTime;
+            
+            //Quaternion newRotation = Quaternion.LookRotation(transform.position - waypoints[currentindex].position);
+            //transform.rotation = newRotation;
+            transform.LookAt(waypoints[currentindex]);
+            if (deltaVector.magnitude <= minimunDistance)
             {
-                goback = true;
-                EnemyAnimator.SetBool("IsRun", true);
+                if (currentindex >= waypoints.Length - 1)
+                {
+                    goback = true;
+                    EnemyAnimator.SetBool("IsRun", true);
+                }
+                else if (currentindex <= 0)
+                {
+                    goback = false;
+                    EnemyAnimator.SetBool("IsRun", true);
+                }
+                if (goback)
+                {
+                    currentindex--;
+                }
+                else currentindex++;
             }
-            else if (currentindex <= 0)
-            {
-                goback = false;
-                EnemyAnimator.SetBool("IsRun", true);
-            }
-            if (goback)
-            {
-                currentindex--;
-            }
-            else currentindex++;
         }
+        else
+        {
+            EnemyAnimator.SetBool("IsRun", false);
+        }
+
+
+
     }
 }
