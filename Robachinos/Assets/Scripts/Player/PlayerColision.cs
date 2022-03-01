@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,8 +12,13 @@ public class PlayerColision : MonoBehaviour
     private bool temporizadorCamara = false;
     //luces
     [SerializeField] GameObject luzGeneral;
-    
+
     [SerializeField] GameObject luzGameOver;
+    [SerializeField] GameObject DoorLeft;
+    [SerializeField] GameObject DoorRight;
+    private bool DoorOpen = false;
+    [SerializeField] float DoorDistance = 10f;
+    public float DoorAcumDistance = 0f;
     // Start is called before the first frame update
     void Start()
     {
@@ -30,13 +36,31 @@ public class PlayerColision : MonoBehaviour
         {
             CamaraOriginal();
         }
+        if (DoorOpen == true)
+        {
+            OpenDoor();
+        }
+
     }
+
+    private void OpenDoor()
+    {
+        if (DoorAcumDistance <= DoorDistance)
+        {
+            DoorLeft.transform.position += Vector3.forward * Time.deltaTime;
+            DoorRight.transform.position += Vector3.back * Time.deltaTime;
+            DoorAcumDistance += Vector3.back.magnitude*Time.deltaTime;
+        }
+    }
+
     private void OnCollisionStay(Collision other)
     {
         //si está tocando el powerup y toca space
         if (other.gameObject.CompareTag("PowerUp") && Input.GetKeyDown(KeyCode.Space))
         {
             CambioCamara();
+            //Metodo de apertura de puerta
+            DoorOpen = true;
         }
     }
     private void OnCollisionEnter(Collision other)
@@ -52,9 +76,15 @@ public class PlayerColision : MonoBehaviour
         if (other.gameObject.CompareTag("Door"))
         {
             //win action
-            Debug.Log("WIN");
+            PlayerWin();
         }
     }
+
+    private static void PlayerWin()
+    {
+        Debug.Log("WIN");
+    }
+
     private void PlayerDie()
     {
         Debug.Log("GAME OVER");
@@ -66,8 +96,8 @@ public class PlayerColision : MonoBehaviour
     {
         Debug.Log("ACCION QUE CAMBIA LA CAMARA Y ABRE LA PUERTA");
         //Cambio de cámara
-        CameraControllerObject.GetComponent<Cameras>().activateCamera(0, false);
         CameraControllerObject.GetComponent<Cameras>().activateCamera(1, true);
+        CameraControllerObject.GetComponent<Cameras>().activateCamera(0, false);
         //Inicio de temporizador
         temporizadorCamara = true;
         //frena movimiento del player
@@ -80,8 +110,9 @@ public class PlayerColision : MonoBehaviour
     private void CamaraOriginal()
     {
         //cambio de camara
-        CameraControllerObject.GetComponent<Cameras>().activateCamera(1, false);
         CameraControllerObject.GetComponent<Cameras>().activateCamera(0, true);
+        CameraControllerObject.GetComponent<Cameras>().activateCamera(1, false);
+
         //apaga las luces
         luzGeneral.SetActive(false);
         //resetea temporizador y lo apaga

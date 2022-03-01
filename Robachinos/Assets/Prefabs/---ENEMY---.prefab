@@ -83,7 +83,7 @@ GameObject:
   - component: {fileID: 754152346531262782}
   - component: {fileID: 754152346531262753}
   m_Layer: 0
-  m_Name: Generador
+  m_Name: BulletGenerator
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -118,6 +118,7 @@ MonoBehaviour:
   bulletPrefab: {fileID: 8756090546100324869, guid: 7f6ee64db1355334bb3d9af3c9703a89, type: 3}
   SpawnRate: 3
   SpawnDelay: 4
+  EnemyCanShoot: 0
 --- !u!1001 &754152346925686476
 PrefabInstance:
   m_ObjectHideFlags: 0
