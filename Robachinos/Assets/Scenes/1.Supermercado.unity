@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.33312848, g: 0.32283536, b: 0.33144665, a: 1}
+  m_IndirectSpecularColor: {r: 0.333129, g: 0.32283583, b: 0.33144686, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -24296,6 +24296,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cc198c66ba240c946b6f10f40c60795a, type: 3}
+--- !u!95 &1541511790 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 2089870791501852129, guid: 72df782a3a9408a48892af65bfc09054, type: 3}
+  m_PrefabInstance: {fileID: 2089870792342927748}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1548322470
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -33019,7 +33024,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 754152346531262753, guid: 968a3a9fcdd337c4ba0f50fa7435562c, type: 3}
       propertyPath: EnemyCanShoot
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 754152346531262782, guid: 968a3a9fcdd337c4ba0f50fa7435562c, type: 3}
       propertyPath: m_LocalPosition.x
@@ -33147,6 +33152,14 @@ PrefabInstance:
       propertyPath: DoorDistance
       value: 0.6
       objectReference: {fileID: 0}
+    - target: {fileID: 1877006997, guid: 72df782a3a9408a48892af65bfc09054, type: 3}
+      propertyPath: deathInterval
+      value: 2.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1877006997, guid: 72df782a3a9408a48892af65bfc09054, type: 3}
+      propertyPath: playerAnimator
+      value: 
+      objectReference: {fileID: 1541511790}
     - target: {fileID: 1877006997, guid: 72df782a3a9408a48892af65bfc09054, type: 3}
       propertyPath: tiempoEsperaCamara
       value: 3
@@ -33584,7 +33597,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7934352650792831570, guid: 36cfbe20dcba8084b95796adfe7e06d1, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -3.8
+      value: -3.59
       objectReference: {fileID: 0}
     - target: {fileID: 7934352650792831570, guid: 36cfbe20dcba8084b95796adfe7e06d1, type: 3}
       propertyPath: m_LocalPosition.z

@@ -23,6 +23,9 @@ public class PlayerColision : MonoBehaviour
     private bool DoorOpen = false;
     [SerializeField] float DoorDistance = 10f;
     private float DoorAcumDistance = 0f;
+    // animator
+    [SerializeField] float deathInterval = 5;    
+    [SerializeField] Animator playerAnimator;
     // Start is called before the first frame update
     void Start()
     {
@@ -93,7 +96,7 @@ public class PlayerColision : MonoBehaviour
             PlayerDie();
         }
     }
-    private void OnTriggerExit(Collider other)
+        private void OnTriggerExit(Collider other)
     {
         if (other.gameObject.CompareTag("Door"))
         {
@@ -115,7 +118,8 @@ public class PlayerColision : MonoBehaviour
     private void PlayerDie()
     {
         Debug.Log("GAME OVER");
-        Destroy(gameObject);
+        playerAnimator.SetBool("IsDeath", true);
+        Destroy(gameObject,deathInterval);
         luzGeneral.SetActive(false);
         luzGameOver.SetActive(true);
     }
