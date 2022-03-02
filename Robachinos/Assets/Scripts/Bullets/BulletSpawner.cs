@@ -5,27 +5,40 @@ using UnityEngine;
 public class BulletSpawner : MonoBehaviour
 {
     [SerializeField] GameObject bulletPrefab;
-    [SerializeField] float SpawnRate = 2f;
-    [SerializeField] float SpawnDelay = 2f;
+    [SerializeField] GameObject bulletGenerator;
+    public float cooldownTimer = 0f;
+    [SerializeField] float cooldownTime = 1f;
+    public bool setTimerCooldown = false;
 
-    [SerializeField] bool EnemyCanShoot = false;
+    public bool EnemyCanShoot = false;
 
     // Start is called before the first frame update
     void Start()
     {
-        if (EnemyCanShoot == true)
-        {
-            InvokeRepeating("SpawnBullet", SpawnDelay, SpawnRate);
-        }
+
     }
 
     // Update is called once per frame
-    void Update()
+    void LateUpdate()
     {
+        SpawnBullet();
 
     }
     private void SpawnBullet()
     {
-        Instantiate(bulletPrefab, transform);
+        if (EnemyCanShoot == true && setTimerCooldown == false)
+        {
+            Instantiate(bulletPrefab,  transform.position ,transform.rotation );
+            setTimerCooldown = true;
+        }
+        if (setTimerCooldown == true)
+        {
+            cooldownTimer += Time.deltaTime;
+        }
+        if (cooldownTimer > cooldownTime)
+        {
+            cooldownTimer = 0;
+            setTimerCooldown = false;
+        }
     }
 }

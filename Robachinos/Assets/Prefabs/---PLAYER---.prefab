@@ -23,13 +23,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2089870792260887046}
-  m_LocalRotation: {x: 0.15999892, y: -0, z: -0, w: 0.9871172}
+  m_LocalRotation: {x: 0.06781576, y: -0, z: -0, w: 0.9976979}
   m_LocalPosition: {x: -0.042000055, y: 1.211, z: 0.87}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2089870792743494418}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 18.414, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 7.777, y: 0, z: 0}
 --- !u!1 &2089870792743494416
 GameObject:
   m_ObjectHideFlags: 0
@@ -78,11 +78,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lifePlayer: 100
-  speedPlayerMove: 3
-  speedPlayerRotate: 4
-  direction: {x: 0, y: 0, z: 0}
-  continuosHealing: 1
-  damage1: 1
+  speedPlayerMove: 5
+  speedPlayerRotate: 2
   playerAnimator: {fileID: 2089870791501852129}
   playerCanMove: 1
 --- !u!114 &1877006997
@@ -97,11 +94,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9720266006073f48b71811d01df2cb0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tiempoCambioCamara: 0
-  tiempoEsperaCamara: 2
+  tiempoEsperaCamara: 3
   CameraControllerObject: {fileID: 0}
   luzGeneral: {fileID: 0}
   luzGameOver: {fileID: 0}
+  luzWin: {fileID: 0}
+  DoorLeft: {fileID: 0}
+  DoorRight: {fileID: 0}
+  tiempoLucesOff: 10
 --- !u!54 &1877007000
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -110,14 +110,14 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2089870792743494416}
   serializedVersion: 2
-  m_Mass: 1
+  m_Mass: 100
   m_Drag: 0
-  m_AngularDrag: 0.05
+  m_AngularDrag: 0
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!1001 &2089870792061353776
 PrefabInstance:
   m_ObjectHideFlags: 0

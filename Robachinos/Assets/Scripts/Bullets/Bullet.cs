@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    [SerializeField] float bulletSpeed = 1.0f;
+    [SerializeField] float bulletSpeed = 5f;
     
     [SerializeField] int Damage = 80;
 
@@ -35,8 +35,5 @@ public class Bullet : MonoBehaviour
         transform.Translate(bulletSpeed * Time.deltaTime * ParameterDirection);
 
     }
-    private void BulletRescale()
-    {
-        transform.localScale += transform.localScale*2;
-    }
+
 }
