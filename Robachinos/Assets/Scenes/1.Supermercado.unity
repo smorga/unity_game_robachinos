@@ -23741,6 +23741,11 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!95 &1504751868 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 2089870791501852129, guid: 72df782a3a9408a48892af65bfc09054, type: 3}
+  m_PrefabInstance: {fileID: 2089870792342927748}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1508231798
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -33170,6 +33175,14 @@ PrefabInstance:
       propertyPath: luzGameOver
       value: 
       objectReference: {fileID: 1645641540}
+    - target: {fileID: 1877006997, guid: 72df782a3a9408a48892af65bfc09054, type: 3}
+      propertyPath: DeathInterval
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1877006997, guid: 72df782a3a9408a48892af65bfc09054, type: 3}
+      propertyPath: PlayerAnimator
+      value: 
+      objectReference: {fileID: 1504751868}
     - target: {fileID: 1877006997, guid: 72df782a3a9408a48892af65bfc09054, type: 3}
       propertyPath: CameraControllerObject
       value: 

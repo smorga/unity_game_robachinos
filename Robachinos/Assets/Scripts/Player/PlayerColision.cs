@@ -20,10 +20,19 @@ public class PlayerColision : MonoBehaviour
     private float timerLucesOff = 0f;
     [SerializeField] float tiempoLucesOff = 10f;
     private bool temporizadorLuces = false;
+    //animacion
+    [SerializeField] Animator PlayerAnimator;
+    [SerializeField] float DeathInterval;
+    private bool TemporizadorParaMuerte;
+    [SerializeField] float TiempoDeMuerte;
+
+
 
     private bool DoorOpen = false;
     private float DoorDistance = 10f;
     private float DoorAcumDistance = 0f;
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -40,6 +49,7 @@ public class PlayerColision : MonoBehaviour
         //temporizador de luces
         TemporizadorLuces();
         LucesOn();
+        TemporizadorMuerte();
     }
 
 
@@ -81,6 +91,7 @@ public class PlayerColision : MonoBehaviour
         {
             PlayerDie();
         }
+        
     }
     private void OnTriggerExit(Collider other)
     {
@@ -99,13 +110,25 @@ public class PlayerColision : MonoBehaviour
         luzWin.SetActive(true);
         SceneManager.LoadScene("1.Supermercado");
     }
-
-    private void PlayerDie()
+        private void PlayerDie()
     {
+        
         Debug.Log("GAME OVER");
         luzGeneral.SetActive(false);
         luzGameOver.SetActive(true);
-        SceneManager.LoadScene("1.Supermercado");
+        PlayerAnimator.SetBool ("IsDeath",true);
+        TemporizadorParaMuerte = true;
+        if (TiempoDeMuerte >= DeathInterval)
+        {
+            SceneManager.LoadScene("1.Supermercado");
+        }
+    }
+    private void TemporizadorMuerte() 
+    {   if (TemporizadorParaMuerte==true)
+        {
+            TiempoDeMuerte += Time.deltaTime;
+
+        }
     }
 
     private void CambioCamara()
