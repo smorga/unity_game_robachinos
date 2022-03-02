@@ -33195,6 +33195,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ---PLAYER---
       objectReference: {fileID: 0}
+    - target: {fileID: 2089870792743494417, guid: 72df782a3a9408a48892af65bfc09054, type: 3}
+      propertyPath: speedPlayerRotate
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 2089870792743494418, guid: 72df782a3a9408a48892af65bfc09054, type: 3}
       propertyPath: m_RootOrder
       value: 5

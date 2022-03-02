@@ -116,6 +116,7 @@ public class PlayerColision : MonoBehaviour
         Debug.Log("GAME OVER");
         luzGeneral.SetActive(false);
         luzGameOver.SetActive(true);
+        GetComponent<Player>().playerCanMove = false;
         PlayerAnimator.SetBool ("IsDeath",true);
         TemporizadorParaMuerte = true;
         if (TiempoDeMuerte >= DeathInterval)
