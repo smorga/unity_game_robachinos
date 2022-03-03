@@ -24,9 +24,9 @@ public class PlayerColision : MonoBehaviour
     [SerializeField] Animator PlayerAnimator;
     [SerializeField] float DeathInterval;
     private bool TemporizadorParaMuerte;
-    [SerializeField] float TiempoDeMuerte;
+    public float TiempoDeMuerte;
 
-
+    [SerializeField] GameObject puDoor;
 
     private bool DoorOpen = false;
     private float DoorDistance = 0.6f;
@@ -76,6 +76,7 @@ public class PlayerColision : MonoBehaviour
             CambioCamara();
             //Metodo de apertura de puerta
             DoorOpen = true;
+            Destroy(puDoor);
         }
         if (other.gameObject.CompareTag("PU LightsOff") && Input.GetKeyDown(KeyCode.Space))
         {
@@ -91,7 +92,7 @@ public class PlayerColision : MonoBehaviour
         {
             PlayerDie();
         }
-        
+
     }
     private void OnTriggerExit(Collider other)
     {
@@ -108,25 +109,33 @@ public class PlayerColision : MonoBehaviour
         Debug.Log("WIN");
         luzGeneral.SetActive(false);
         luzWin.SetActive(true);
-        SceneManager.LoadScene("1.Supermercado");
-    }
-        private void PlayerDie()
-    {
+        GetComponent<Player>().playerCanMove = false;
+        PlayerAnimator.SetBool("IsRun", false);
+        TemporizadorParaMuerte = true;
         
+        
+        //SceneManager.LoadScene("1.Supermercado");
+    }
+    private void PlayerDie()
+    {
+
         Debug.Log("GAME OVER");
         luzGeneral.SetActive(false);
         luzGameOver.SetActive(true);
         GetComponent<Player>().playerCanMove = false;
-        
-        PlayerAnimator.SetBool ("IsDeath",true);
+
+        PlayerAnimator.SetBool("IsDeath", true);
         TemporizadorParaMuerte = true;
-        if (TiempoDeMuerte >= DeathInterval)
+
+    }
+    private void TemporizadorMuerte()
+    {
+        if (TiempoDeMuerte > DeathInterval)
         {
             SceneManager.LoadScene("1.Supermercado");
+            TemporizadorParaMuerte = false;
         }
-    }
-    private void TemporizadorMuerte() 
-    {   if (TemporizadorParaMuerte==true)
+        if (TemporizadorParaMuerte == true)
         {
             TiempoDeMuerte += Time.deltaTime;
 

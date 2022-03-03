@@ -23,13 +23,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2089870792260887046}
-  m_LocalRotation: {x: 0.06781576, y: -0, z: -0, w: 0.9976979}
-  m_LocalPosition: {x: -0.042000055, y: 1.211, z: 0.87}
+  m_LocalRotation: {x: 0.049212456, y: -0, z: -0, w: 0.99878836}
+  m_LocalPosition: {x: -0.042000055, y: 1.12, z: 0.86}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2089870792743494418}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 7.777, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 5.642, y: 0, z: 0}
 --- !u!1 &2089870792743494416
 GameObject:
   m_ObjectHideFlags: 0
@@ -79,7 +79,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lifePlayer: 100
   speedPlayerMove: 5
-  speedPlayerRotate: 2
+  speedPlayerRotate: 3
   playerAnimator: {fileID: 2089870791501852129}
   playerCanMove: 1
 --- !u!114 &1877006997
@@ -102,6 +102,9 @@ MonoBehaviour:
   DoorLeft: {fileID: 0}
   DoorRight: {fileID: 0}
   tiempoLucesOff: 10
+  PlayerAnimator: {fileID: 2089870791501852129}
+  DeathInterval: 0
+  TiempoDeMuerte: 0
 --- !u!54 &1877007000
 Rigidbody:
   m_ObjectHideFlags: 0
