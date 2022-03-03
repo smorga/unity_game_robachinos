@@ -29,7 +29,7 @@ public class PlayerColision : MonoBehaviour
 
 
     private bool DoorOpen = false;
-    private float DoorDistance = 10f;
+    private float DoorDistance = 0.6f;
     private float DoorAcumDistance = 0f;
 
 
@@ -117,6 +117,7 @@ public class PlayerColision : MonoBehaviour
         luzGeneral.SetActive(false);
         luzGameOver.SetActive(true);
         GetComponent<Player>().playerCanMove = false;
+        
         PlayerAnimator.SetBool ("IsDeath",true);
         TemporizadorParaMuerte = true;
         if (TiempoDeMuerte >= DeathInterval)
