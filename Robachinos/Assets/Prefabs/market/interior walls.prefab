@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1078216378858660965}
-  - component: {fileID: 1672394650915286016}
+  - component: {fileID: 6843504609991899747}
   m_Layer: 0
   m_Name: interior walls
   m_TagString: Untagged
@@ -32,8 +32,8 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!64 &1672394650915286016
-MeshCollider:
+--- !u!65 &6843504609991899747
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -42,10 +42,9 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 0}
+  serializedVersion: 2
+  m_Size: {x: 0.25764304, y: 5.216383, z: 47.94901}
+  m_Center: {x: -0.004049927, y: 2.602477, z: 0.011343002}
 --- !u!1001 &5760894043081680640
 PrefabInstance:
   m_ObjectHideFlags: 0
