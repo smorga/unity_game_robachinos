@@ -13876,6 +13876,11 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!1 &915684293 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2089870792260887046, guid: 72df782a3a9408a48892af65bfc09054, type: 3}
+  m_PrefabInstance: {fileID: 2089870792342927748}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &915740667
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -28799,6 +28804,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a9da80f587bbf9046aefc4a4cfb8a7fc, type: 3}
+--- !u!1 &1938095462 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7946861697542260175, guid: c2551289a95e46246bb0472f624549c2, type: 3}
+  m_PrefabInstance: {fileID: 1107090814}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1939954865
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -33053,7 +33063,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 754152346531262753, guid: 968a3a9fcdd337c4ba0f50fa7435562c, type: 3}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 754152346531262753, guid: 968a3a9fcdd337c4ba0f50fa7435562c, type: 3}
       propertyPath: bulletSound
@@ -33186,6 +33196,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1256970070}
     - target: {fileID: 1877006997, guid: 72df782a3a9408a48892af65bfc09054, type: 3}
+      propertyPath: puLight
+      value: 
+      objectReference: {fileID: 1938095462}
+    - target: {fileID: 1877006997, guid: 72df782a3a9408a48892af65bfc09054, type: 3}
       propertyPath: DoorLeft
       value: 
       objectReference: {fileID: 161768773}
@@ -33208,6 +33222,14 @@ PrefabInstance:
     - target: {fileID: 1877006997, guid: 72df782a3a9408a48892af65bfc09054, type: 3}
       propertyPath: TiempoDeMuerte
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1877006997, guid: 72df782a3a9408a48892af65bfc09054, type: 3}
+      propertyPath: playerSeePoint
+      value: 
+      objectReference: {fileID: 915684293}
+    - target: {fileID: 1877006997, guid: 72df782a3a9408a48892af65bfc09054, type: 3}
+      propertyPath: playerSeeDistance
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1877006997, guid: 72df782a3a9408a48892af65bfc09054, type: 3}
       propertyPath: CameraControllerObject
@@ -33500,7 +33522,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5518452063822899826, guid: 400b84694a32c8045851b96bf788c12e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.95
+      value: 0.907
       objectReference: {fileID: 0}
     - target: {fileID: 5518452063822899826, guid: 400b84694a32c8045851b96bf788c12e, type: 3}
       propertyPath: m_LocalPosition.z
