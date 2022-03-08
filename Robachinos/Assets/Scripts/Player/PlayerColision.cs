@@ -25,18 +25,26 @@ public class PlayerColision : MonoBehaviour
     [SerializeField] float DeathInterval;
     private bool TemporizadorParaMuerte;
     public float TiempoDeMuerte;
+    [SerializeField] GameObject playerSeePoint;
 
     [SerializeField] GameObject puDoor;
-
+    [SerializeField] GameObject puLight;
     private bool DoorOpen = false;
     private float DoorDistance = 0.6f;
     private float DoorAcumDistance = 0f;
-
+    private bool playerCanSeePuDoor;
+    private bool playerCanSeePuLight;
+    [SerializeField] float playerSeeDistance=2f;
 
     // Start is called before the first frame update
     void Start()
     {
 
+    }
+    private void FixedUpdate()
+    {
+        PlayerSeePuDoor();
+        PlayerSeePuLight();
     }
     void Update()
     {
@@ -50,6 +58,9 @@ public class PlayerColision : MonoBehaviour
         TemporizadorLuces();
         LucesOn();
         TemporizadorMuerte();
+
+        //nueva condicion del raycast para validar si el player ve el PU
+
     }
 
 
@@ -70,20 +81,55 @@ public class PlayerColision : MonoBehaviour
 
     private void OnCollisionStay(Collision other)
     {
-        //si está tocando el powerup y toca space
-        if (other.gameObject.CompareTag("PU OpenDoor") && Input.GetKeyDown(KeyCode.Space))
-        {
-            CambioCamara();
-            //Metodo de apertura de puerta
-            DoorOpen = true;
-            Destroy(puDoor);
-        }
-        if (other.gameObject.CompareTag("PU LightsOff") && Input.GetKeyDown(KeyCode.Space))
-        {
-            LucesOff();
 
+        {
+
+            //si está tocando el powerup y toca space
+            if (other.gameObject.CompareTag("PU OpenDoor") && Input.GetKeyDown(KeyCode.Space)
+                && playerCanSeePuDoor == true)
+            {
+                CambioCamara();
+                //Metodo de apertura de puerta
+                DoorOpen = true;
+                Destroy(puDoor);
+            }
+            if (other.gameObject.CompareTag("PU LightsOff") && Input.GetKeyDown(KeyCode.Space)
+                && playerCanSeePuLight == true)
+
+            {
+                LucesOff();
+
+            }
+        }
+
+
+    }
+    private void PlayerSeePuDoor()
+    {
+
+        if (Physics.Raycast(playerSeePoint.transform.position - playerSeePoint.transform.forward, playerSeePoint.transform.forward, out RaycastHit hitDoor, playerSeeDistance)
+                && hitDoor.collider.gameObject == puDoor)
+        {
+            playerCanSeePuDoor = true;
+        }
+        else
+        {
+            playerCanSeePuDoor = false;
         }
     }
+    private void PlayerSeePuLight()
+    {
+        if (Physics.Raycast(playerSeePoint.transform.position - playerSeePoint.transform.forward, playerSeePoint.transform.forward, out RaycastHit hitLight, playerSeeDistance)
+                && hitLight.collider.gameObject == puLight)
+        {
+            playerCanSeePuLight = true;
+        }
+        else
+        {
+            playerCanSeePuLight = false;
+        }
+    }
+
 
     private void OnCollisionEnter(Collision other)
     {
@@ -112,8 +158,8 @@ public class PlayerColision : MonoBehaviour
         GetComponent<Player>().playerCanMove = false;
         PlayerAnimator.SetBool("IsRun", false);
         TemporizadorParaMuerte = true;
-        
-        
+
+
         //SceneManager.LoadScene("1.Supermercado");
     }
     private void PlayerDie()
