@@ -8,6 +8,7 @@ public class EnemyBulletSpawner : MonoBehaviour
     [SerializeField] float SpawnRate = 2f;
     [SerializeField] float SpawnDelay = 2f;
     [SerializeField] bool EnemyCanShoot = false;
+    public  AudioClip bulletSound;
     // Start is called before the first frame update
     void Start()
     {
@@ -25,6 +26,7 @@ public class EnemyBulletSpawner : MonoBehaviour
     private void SpawnBullet()
     {
         Instantiate(bulletPrefab, transform);
+        AudioManager.instance.PlaySound(bulletSound);
     }
 
 }
