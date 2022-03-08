@@ -11,6 +11,8 @@ public class BulletSpawner : MonoBehaviour
     public bool setTimerCooldown = false;
 
     public bool EnemyCanShoot = false;
+        public  AudioClip bulletSound;
+
 
     // Start is called before the first frame update
     void Start()
@@ -29,6 +31,7 @@ public class BulletSpawner : MonoBehaviour
         if (EnemyCanShoot == true && setTimerCooldown == false)
         {
             Instantiate(bulletPrefab,  transform.position ,transform.rotation );
+            AudioManager.instance.PlaySound(bulletSound);
             setTimerCooldown = true;
         }
         if (setTimerCooldown == true)
